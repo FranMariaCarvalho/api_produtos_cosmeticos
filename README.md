@@ -7,8 +7,9 @@ Esta é uma API RESTful para gerenciamento de produtos em estoque. Ela permite o
 - **Linguagem**: Python 3.8+
 - **Framework**: Flask
 - **Arquitetura**: MVC
-- **Documentação da API**: Swagger (Flasgger)
+- **Documentação da API**: Swagger (flask-restx)
 - **Banco de Dados**: SQLite
+- **ORM**: SQLAlchemy (Flask-SQLAlchemy)
 
 ## Instalação
 
@@ -37,7 +38,7 @@ As configurações do banco de dados e outras podem ser encontradas e modificada
 Execução
 Para rodar a aplicação, execute:
 
-python run.py
+python main.py
 Isso iniciará um servidor de desenvolvimento na porta 5000 por padrão.
 
 Testes
@@ -45,7 +46,7 @@ Para executar os testes, use:
 
 python -m unittest
 Documentação da API
-Com a aplicação rodando, acesse http://localhost:5000/apidocs para visualizar a documentação da API e testar os endpoints.
+Com a aplicação rodando, acesse http://127.0.0.1:5000 para visualizar a documentação da API e testar os endpoints.
 
 Contribuindo
 Contribuições são bem-vindas!

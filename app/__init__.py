@@ -1,20 +1,17 @@
-# app/__init__.py
-
 from flask import Flask
-from app.database import db
+from flask_sqlalchemy import SQLAlchemy
 from flask_migrate import Migrate
-from flasgger import Swagger
+from flask_restx import Api, Resource, fields
+from config import Config
 
-def create_app():
-    app = Flask(__name__)
-    app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///meu_projeto.sqlite'
-    app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
-    
-    db.init_app(app)
-    Migrate(app, db)
-    Swagger(app)
-    
-    from app.controllers.produto_controller import produto_blueprint
-    app.register_blueprint(produto_blueprint)
-    
-    return app
+app = Flask(__name__)
+app.config.from_object(Config)
+
+db = SQLAlchemy(app)
+migrate = Migrate(app, db)
+
+api = Api(app, version='1.0', title='API de Produtos Cosméticos',
+          description='Uma API para gerenciamento de produtos')
+
+from app.models.models import Produto
+from app.controllers.produto_controllers import *
